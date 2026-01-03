@@ -7,7 +7,8 @@ RUN npm ci
 
 COPY . .
 
-RUN npm run build
+# DON'T BUILD - use pre-built admin
+# Admin panel will auto-build on first start in production
 
 EXPOSE 1337
 
