@@ -1,21 +1,3 @@
-FROM node:20 AS build
-
-WORKDIR /app
-
-# Copy only package.json (NOT package-lock.json)
-COPY package.json ./
-
-# This will create a fresh Linux-compatible package-lock.json
-RUN npm install
-
-# Copy source
-COPY . .
-
-# Build
-ENV NODE_ENV=production
-RUN npm run build
-
-# Production stage
 FROM node:20
 
 RUN apt-get update && apt-get install -y \
@@ -24,11 +6,20 @@ RUN apt-get update && apt-get install -y \
 
 WORKDIR /app
 
-# Copy everything from build stage INCLUDING node_modules
-COPY --from=build /app ./
+# Copy only package.json (NOT package-lock.json)
+COPY package.json ./
 
-# Do NOT prune - we need pg module
+# Install all dependencies (including pg)
+RUN npm install
+
+# Copy source code
+COPY . .
+
+# Build Strapi admin
 ENV NODE_ENV=production
+RUN npm run build
+
+# IMPORTANT: Do NOT run npm prune - we need pg module!
 
 RUN chown -R node:node /app
 USER node
