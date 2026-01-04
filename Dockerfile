@@ -1,4 +1,4 @@
-FROM node:18-alpine
+FROM node:20-alpine
 
 RUN apk update && apk add --no-cache \
     build-base \
@@ -16,17 +16,17 @@ WORKDIR /app
 
 COPY package.json package-lock.json ./
 
-# Install ALL dependencies INCLUDING devDependencies
+# Install with NODE_ENV=development to get ALL deps
 ENV NODE_ENV=development
 RUN npm install
 
 COPY . .
 
-# NOW build with NODE_ENV=production
+# Build with production
 ENV NODE_ENV=production
 RUN npm run build
 
-# Clean up dev dependencies AFTER build
+# Remove dev deps
 RUN npm prune --production
 
 RUN chown -R node:node /app
