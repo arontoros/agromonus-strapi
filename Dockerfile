@@ -3,15 +3,21 @@ FROM node:20
 # Install vips for image processing
 RUN apt-get update && apt-get install -y \
     libvips-dev \
+    python3 \
+    make \
+    g++ \
     && rm -rf /var/lib/apt/lists/*
 
 WORKDIR /app
 
 COPY package.json package-lock.json ./
 
-# Install with development mode to get all deps
+# Install ALL dependencies
 ENV NODE_ENV=development
 RUN npm install
+
+# CRITICAL: Rebuild SWC with correct architecture
+RUN npm rebuild @swc/core
 
 COPY . .
 
