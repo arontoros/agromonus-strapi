@@ -2,11 +2,11 @@ FROM node:20 AS build
 
 WORKDIR /app
 
-# Copy package files
-COPY package.json package-lock.json ./
+# Copy only package.json (NOT package-lock.json)
+COPY package.json ./
 
-# Install dependencies (this will use Linux-compatible binaries)
-RUN npm ci
+# This will create a fresh Linux-compatible package-lock.json
+RUN npm install
 
 # Copy source
 COPY . .
@@ -24,16 +24,8 @@ RUN apt-get update && apt-get install -y \
 
 WORKDIR /app
 
-# Copy built app from build stage
-COPY --from=build /app/package.json /app/package-lock.json ./
-COPY --from=build /app/node_modules ./node_modules
-COPY --from=build /app/dist ./dist
-COPY --from=build /app/build ./build
-COPY --from=build /app/public ./public
-COPY --from=build /app/.strapi ./.strapi
-COPY --from=build /app/config ./config
-COPY --from=build /app/database ./database
-COPY --from=build /app/src ./src
+# Copy from build stage
+COPY --from=build /app ./
 
 ENV NODE_ENV=production
 
