@@ -24,9 +24,10 @@ RUN apt-get update && apt-get install -y \
 
 WORKDIR /app
 
-# Copy from build stage
+# Copy everything from build stage INCLUDING node_modules
 COPY --from=build /app ./
 
+# Do NOT prune - we need pg module
 ENV NODE_ENV=production
 
 RUN chown -R node:node /app
