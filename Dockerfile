@@ -1,22 +1,15 @@
-FROM node:20-alpine
+FROM node:20
 
-RUN apk update && apk add --no-cache \
-    build-base \
-    gcc \
-    autoconf \
-    automake \
-    zlib-dev \
-    libpng-dev \
-    nasm \
-    bash \
-    vips-dev \
-    git
+# Install vips for image processing
+RUN apt-get update && apt-get install -y \
+    libvips-dev \
+    && rm -rf /var/lib/apt/lists/*
 
 WORKDIR /app
 
 COPY package.json package-lock.json ./
 
-# Install with NODE_ENV=development to get ALL deps
+# Install with development mode to get all deps
 ENV NODE_ENV=development
 RUN npm install
 
@@ -26,7 +19,7 @@ COPY . .
 ENV NODE_ENV=production
 RUN npm run build
 
-# Remove dev deps
+# Clean up dev dependencies
 RUN npm prune --production
 
 RUN chown -R node:node /app
