@@ -3,25 +3,19 @@ FROM node:20
 # Install vips for image processing
 RUN apt-get update && apt-get install -y \
     libvips-dev \
-    python3 \
-    make \
-    g++ \
     && rm -rf /var/lib/apt/lists/*
 
 WORKDIR /app
 
-COPY package.json package-lock.json ./
+COPY package.json ./
 
-# Install ALL dependencies
-ENV NODE_ENV=development
+# CRITICAL: Regenerate package-lock.json in Linux environment
+# This ensures SWC native bindings are correct for Linux
 RUN npm install
-
-# CRITICAL: Rebuild SWC with correct architecture
-RUN npm rebuild @swc/core
 
 COPY . .
 
-# Build with production
+# Build Strapi
 ENV NODE_ENV=production
 RUN npm run build
 
