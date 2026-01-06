@@ -629,7 +629,7 @@ export interface ApiJarmuJarmu extends Struct.CollectionTypeSchema {
     > &
       Schema.Attribute.SetPluginOptions<{
         i18n: {
-          localized: true;
+          localized: false;
         };
       }>;
     kg: Schema.Attribute.Integer &
