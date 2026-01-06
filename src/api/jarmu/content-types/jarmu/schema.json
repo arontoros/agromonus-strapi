@@ -35,7 +35,22 @@
         "Homlokrakodók",
         "Teleszkópos rakodók",
         "Lánctalpas munkagépek",
-        "Szerelékek"
+        "Szerelékek",
+        "Forgórakodó",
+        "Földmunka és rakodó gép",
+        "Dömper",
+        "Mezőgazdasági rakodó",
+        "Targonca",
+        "Árokásó",
+        "Aggregátor áramfejlesztő",
+        "Egyengető, tömörítő",
+        "Úthenger",
+        "Billencs-bánya",
+        "Városi terepjáró",
+        "Coupe",
+        "Kombi",
+        "Sport",
+        "Egyéb"
       ]
     },
     "nettoprice": {

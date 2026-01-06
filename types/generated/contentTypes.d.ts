@@ -580,6 +580,21 @@ export interface ApiJarmuJarmu extends Struct.CollectionTypeSchema {
         'Teleszk\u00F3pos rakod\u00F3k',
         'L\u00E1nctalpas munkag\u00E9pek',
         'Szerel\u00E9kek',
+        'Forg\u00F3rakod\u00F3',
+        'F\u00F6ldmunka \u00E9s rakod\u00F3 g\u00E9p',
+        'D\u00F6mper',
+        'Mez\u0151gazdas\u00E1gi rakod\u00F3',
+        'Targonca',
+        '\u00C1rok\u00E1s\u00F3',
+        'Aggreg\u00E1tor \u00E1ramfejleszt\u0151',
+        'Egyenget\u0151, t\u00F6m\u00F6r\u00EDt\u0151',
+        '\u00DAthenger',
+        'Billencs-b\u00E1nya',
+        'V\u00E1rosi terepj\u00E1r\u00F3',
+        'Coupe',
+        'Kombi',
+        'Sport',
+        'Egy\u00E9b',
       ]
     > &
       Schema.Attribute.SetPluginOptions<{
