@@ -500,7 +500,7 @@ export interface ApiHeroSectionHeroSection extends Struct.SingleTypeSchema {
     > &
       Schema.Attribute.SetPluginOptions<{
         i18n: {
-          localized: true;
+          localized: false;
         };
       }>;
     backgroundImages: Schema.Attribute.Media<
@@ -509,7 +509,7 @@ export interface ApiHeroSectionHeroSection extends Struct.SingleTypeSchema {
     > &
       Schema.Attribute.SetPluginOptions<{
         i18n: {
-          localized: true;
+          localized: false;
         };
       }>;
     createdAt: Schema.Attribute.DateTime;
