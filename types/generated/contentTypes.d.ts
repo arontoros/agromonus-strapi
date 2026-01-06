@@ -512,18 +512,6 @@ export interface ApiHeroSectionHeroSection extends Struct.SingleTypeSchema {
           localized: true;
         };
       }>;
-    buttonLink: Schema.Attribute.String &
-      Schema.Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }>;
-    buttonText: Schema.Attribute.String &
-      Schema.Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }>;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -539,7 +527,13 @@ export interface ApiHeroSectionHeroSection extends Struct.SingleTypeSchema {
           localized: true;
         };
       }>;
-    title: Schema.Attribute.String &
+    title1: Schema.Attribute.String &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    title2: Schema.Attribute.String &
       Schema.Attribute.SetPluginOptions<{
         i18n: {
           localized: true;

@@ -15,7 +15,15 @@
     }
   },
   "attributes": {
-    "title": {
+    "title1": {
+      "type": "string",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
+    },
+    "title2": {
       "type": "string",
       "pluginOptions": {
         "i18n": {
@@ -25,22 +33,6 @@
     },
     "subtitle": {
       "type": "text",
-      "pluginOptions": {
-        "i18n": {
-          "localized": true
-        }
-      }
-    },
-    "buttonText": {
-      "type": "string",
-      "pluginOptions": {
-        "i18n": {
-          "localized": true
-        }
-      }
-    },
-    "buttonLink": {
-      "type": "string",
       "pluginOptions": {
         "i18n": {
           "localized": true
